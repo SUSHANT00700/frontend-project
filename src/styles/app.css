@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+*{
+    font-family:  "DM Sans", sans-serif;
+}
+
+.squareDiv{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 35px;
+    margin-top: 33px;
+    margin-left: 43px;
+    scroll-behavior: smooth;
+}
+.squareDiv::-webkit-scrollbar{
+    display: none;
+}

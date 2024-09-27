@@ -1,0 +1,60 @@
+.navbar{
+    max-height: 73px;
+    display: flex;
+    flex-direction: row;
+    gap:17px;
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: 0px 4px 15px 0px #00000026;
+;
+}
+
+.pill{
+    width: 136px;
+    height: 45px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: white;
+    gap: 5.29px;
+}
+
+.pill:hover{
+    cursor: pointer;
+}
+
+#register{
+    background-color: #FF7373;
+}
+
+#sign-in{
+    background-color: #73ABFF;
+}
+
+.userPort{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    
+}
+
+.burger:hover{
+    cursor: pointer;
+}
+
+.logoutDiv{
+    position:absolute;
+    top: 68px;
+    width: 251px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 27.78px;
+    font-weight: 700;
+    justify-content: center;
+    z-index: 2;
+    background-color: white;
+}

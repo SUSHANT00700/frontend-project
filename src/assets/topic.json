@@ -1,0 +1,26 @@
+[
+    {
+        "name":"All",
+        "image":"https://www.brainbalancecenters.com/hubfs/blog_family_life_compressed.jpg"
+    },
+    {
+        "name": "food",
+        "image": "https://photo-cdn2.icons8.com/qoIfYGISMaHO2r-tkRX4a7y7VSKE-VRVHiS0TnRXvIc/rs:fit:1608:1072/czM6Ly9pY29uczgu/bW9vc2UtcHJvZC5l/eHRlcm5hbC9hMmE0/Mi85Yjg1NGIwYmI5/YmY0ZGE3YjA0Y2U3/ODYwMTg0ODNjYy5q/cGc.jpg"
+    },
+    {
+        "name": "health and fitness",
+        "image": "https://miro.medium.com/v2/resize:fit:626/0*9xySCPzY8Tm1DfvD.jpg"
+    },
+    {
+        "name": "travel",
+        "image": "https://t4.ftcdn.net/jpg/00/65/48/25/360_F_65482539_C0ZozE5gUjCafz7Xq98WB4dW6LAhqKfs.jpg"
+    },
+    {
+        "name": "movies",
+        "image": "https://image.cnbcfm.com/api/v1/image/104768589-movies-anywhere.JPG?v=1507816437&w=1920&h=1080"
+    },
+    {
+        "name":"education",
+        "image":"https://www.borgenmagazine.com/wp-content/uploads/2020/08/Improved-Education.jpg"
+    }
+]
