@@ -2,19 +2,28 @@ import React, { useState } from 'react'
 import "../styles/navbar.css";
 import bookmark from '../assets/bookmark.png'
 import burger from '../assets/burger.png'
-import SignIn from './SignIn';
+import Register from './Register';
+import { useNavigate } from 'react-router-dom';
+import Login from './Login';
 
-function Navbar({ user,setUser}) {
+function Navbar({ user,setUser }) {
 
-    const [visible,setVisible] = useState(false)
-    const [signInVisible,setSignInVisible] = useState(false)
+    const [logoutDiv,setLogoutDivVisible] = useState(false)
+    const [registerVisible,setRegisterVisible] = useState(false)
+    const [loginVisible,setLoginVisible] = useState(false)
+    const navigate = useNavigate()
 
     const handleLogoutClick = ()=>{
-        setVisible(!visible)
+        setLogoutDivVisible(!logoutDiv)
     }
 
-    const handleSignInClick = ()=>{
-      setSignInVisible(!signInVisible)
+    const handleLoginClick = ()=>{
+      navigate("/login")
+      setLoginVisible(!loginVisible)
+    }
+    const handleRegisterClick = ()=>{
+      navigate("/register")
+      setRegisterVisible(!registerVisible)
     }
 
     return (
@@ -22,40 +31,80 @@ function Navbar({ user,setUser}) {
         <div className="navbar">
           {user === null ? (
             <>
-              <div className="pill" id="register">
+              <div
+                className="pill"
+                id="register"
+                onClick={() => {
+                  handleRegisterClick();
+                }}
+              >
                 Register Now
               </div>
-              <div className="pill" id="sign-in" onClick={()=>{handleSignInClick()}}>
+              <div className="pill" id="sign-in"
+                onClick={()=>{
+                  handleLoginClick()
+                }}
+              >
                 Sign in
               </div>
+              {registerVisible && (
+                <Register
+                  registerVisible={registerVisible}
+                  setRegisterVisible={setRegisterVisible}
+                  setUser={setUser}
+                />
+              )}
               {
-                signInVisible && <SignIn/>
+                loginVisible && (
+                  <Login
+                    loginVisible = {loginVisible}
+                    setLoginVisible = {setLoginVisible}
+                    setUser={setUser}
+                  />
+                )
               }
             </>
           ) : (
             <>
-                <div className='pill' id='register'>
-                    <img src={bookmark} alt='bookmark'/>
-                    Bookmark
-                </div>
-                <div className='pill' id='register'>
-                    Add story
-                </div>
-                <img src={user.portfolio} alt='userPort' className='userPort'/>
-                <img src={burger} alt='burger' className='burger' style={{width:18, height:12,marginRight:31}} onClick={handleLogoutClick}/>
+              <div className="pill" id="register">
+                <img src={bookmark} alt="bookmark" />
+                Bookmark
+              </div>
+              <div className="pill" id="register">
+                Add story
+              </div>
+              <img
+                src="https://t3.ftcdn.net/jpg/01/97/11/64/360_F_197116416_hpfTtXSoJMvMqU99n6hGP4xX0ejYa4M7.jpg"
+                alt="userPort"
+                className="userPort"
+                style={{
+                  objectFit:'contain'
+                }}
+              />
+              <img
+                src={burger}
+                alt="burger"
+                className="burger"
+                style={{ width: 18, height: 12, marginRight: 31 }}
+                onClick={handleLogoutClick}
+              />
 
-                {
-                    visible?<div className='logoutDiv'>
-                        {
-                            user.name
-                        }
-                        <div className='pill' id='register' onClick={()=>{setUser(null)}}>
-                            Logout
-                        </div>
-                    </div>:<>
-
-                    </>
-                }
+              {logoutDiv ? (
+                <div className="logoutDiv">
+                  {user.username}
+                  <div
+                    className="pill"
+                    id="register"
+                    onClick={() => {
+                      setUser(null);
+                    }}
+                  >
+                    Logout
+                  </div>
+                </div>
+              ) : (
+                <></>
+              )}
             </>
           )}
         </div>
