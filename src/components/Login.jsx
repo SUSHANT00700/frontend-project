@@ -36,7 +36,7 @@ function Login({ loginVisible, setLoginVisible, setUser }) {
           <div
             className="close-button"
             onClick={() => {
-              setLoginVisible(loginVisible);
+              setLoginVisible(!loginVisible);
             }}
           ></div>
         </div>

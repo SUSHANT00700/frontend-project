@@ -1,0 +1,110 @@
+.outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  min-height: 100%;
+  min-width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.createStory{
+  height: 538px;
+  width: 682px;
+  background-color: white;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  border-radius:20px ;
+  
+}
+
+.closeButtonContainer{
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-right: 19px;
+}
+
+.close-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #FF0000;
+  border: 4px solid #FF0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 200;
+  user-select: none;
+  
+}
+
+.info{
+    font-size: 10px;
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin-right: 50px;
+}
+
+.dataEntry{
+    width: 452px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    align-items: start;
+    font-weight: 700;
+    input{
+        width: 270px;
+        height: 40px;
+    }
+    select{
+        width: 277px;
+        height: 46px;
+    }
+    textarea{
+        width: 270px;
+        height: 104.8px;
+    }
+}
+
+.pill{
+    width: 116px;
+    height: 41.3px;
+}
+
+#prev{
+    background-color: #7EFF73;
+}
+#next{
+    background-color: #73ABFF;
+}
+#post{
+    background-color: #FF7373;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: 2fr 2.5fr;
+    width: 85%;
+    .group1{
+        display: flex;
+        justify-content: space-around;
+    }
+    .group2{
+        display: flex;
+        justify-content: flex-end;
+    }
+}
