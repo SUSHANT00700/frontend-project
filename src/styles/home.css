@@ -1,0 +1,22 @@
+.category{
+    min-width: 100vw;
+    height: auto;
+    .title{
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        min-height: 20%;
+        padding: 20px;
+    }
+    .data{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 361px;
+        .noStory{
+            color: #8E8E8E;
+            font-size: 30px;
+            font-weight: 700;
+        }
+    }
+}

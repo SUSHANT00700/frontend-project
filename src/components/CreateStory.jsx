@@ -3,18 +3,11 @@ import "../styles/CreateStory.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { storyRoutes } from "../utils/APIRoutes";
+import { CATEGORIES } from "../utils/constants";
 
 function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
-
-  const CATEGORIES = [
-    "food",
-    "health and fitness",
-    "travel",
-    "movies",
-    "education",
-  ];
 
   const [currSlide, setCurrSlide] = useState(0);
 
