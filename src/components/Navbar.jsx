@@ -5,7 +5,7 @@ import burger from "../assets/burger.png";
 import Register from "./Register";
 import { useNavigate } from "react-router-dom";
 import Login from "./Login";
-import AddStory from "./AddStory";
+import CreateStory from "./CreateStory";
 
 function Navbar({ user, setUser }) {
   const [logoutDiv, setLogoutDivVisible] = useState(false);
@@ -102,10 +102,11 @@ function Navbar({ user, setUser }) {
             />
 
             {addStoryVisible && (
-              <AddStory
+              <CreateStory
                 setAddStoryVisible={setAddStoryVisible}
                 addStoryVisible={addStoryVisible}
                 user={user}
+                setUser={setUser}
               />
             )}
 
