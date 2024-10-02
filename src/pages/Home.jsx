@@ -7,9 +7,11 @@ import axios from "axios";
 import { storyRoutes } from "../utils/APIRoutes.js";
 import "../styles/home.css";
 import StoryCard from "../components/StoryCard.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate()
   const [frontData, setFrontData] = useState({
     food: [],
     "health and fitness": [],
@@ -24,7 +26,7 @@ function Home() {
   };
 
   const handleStoryClick = (storyID)=>{
-    console.log(storyID)
+    navigate(`/view/${storyID}`)
   }
 
   useEffect(() => {
