@@ -4,19 +4,20 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { storyRoutes } from "../utils/APIRoutes";
 import { CATEGORIES } from "../utils/constants";
+import { validateMediaUrl } from "../utils/mediavalidator";
 
 function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
   const [category, setCategory] = useState("");
   const navigate = useNavigate();
 
   const [currSlide, setCurrSlide] = useState(0);
-
+  
   const [slides, setSlides] = useState([
     { heading: "", description: "", imgURL: "" },
     { heading: "", description: "", imgURL: "" },
     { heading: "", description: "", imgURL: "" },
   ]);
-
+  
   const handleAddSlides = () => {
     if (slides.length < 6) {
       setSlides([...slides, { heading: "", description: "", imgURL: "" }]);
@@ -57,6 +58,15 @@ function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
         slide.imgURL.trim().length === 0
       ) {
         alert("Please fill all fields");
+        return;
+      }
+    }
+
+    // validating media url
+    for (let slide of slides){
+      const result = await validateMediaUrl(slide.imgURL)
+      if(result.valid === false){
+        alert("Invalid media input")
         return;
       }
     }

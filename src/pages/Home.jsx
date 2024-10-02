@@ -23,6 +23,10 @@ function Home() {
     return response.data;
   };
 
+  const handleStoryClick = (storyID)=>{
+    console.log(storyID)
+  }
+
   useEffect(() => {
     const fetchAlldata = async () => {
       for (let c of CATEGORIES) {
@@ -68,7 +72,19 @@ function Home() {
       {user && (
         <div className="category">
           <div className="title">Your stories</div>
-          <div className="data"></div>
+          <div className="data">
+            {user.stories.length === 0 ? (
+              <div className="noStory">No Stories Available</div>
+            ) : (
+              <div className="stories">
+                {user.stories.map((data, idx) => (
+                  <div className="storyContainer" onClick={()=>handleStoryClick(data)}>
+                    <StoryCard data={{_id:data}} key={idx} />
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -79,11 +95,13 @@ function Home() {
             {frontData[c].length === 0 ? (
               <div className="noStory">No Stories Available</div>
             ) : (
-              <>
+              <div className="stories">
                 {frontData[c].map((data, idx) => (
-                  <StoryCard data={data} key={idx} />
+                  <div className="storyContainer" onClick={()=>handleStoryClick(data._id)}>
+                    <StoryCard data={data} key={idx} />
+                  </div>
                 ))}
-              </>
+              </div>
             )}
           </div>
         </div>

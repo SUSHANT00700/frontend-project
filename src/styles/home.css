@@ -12,11 +12,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 361px;
+        height: 500px;
         .noStory{
             color: #8E8E8E;
             font-size: 30px;
             font-weight: 700;
+        }
+        .stories{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            .storyContainer{
+                width: 25%;
+                display: flex;
+                justify-content: center;
+            }
         }
     }
 }
