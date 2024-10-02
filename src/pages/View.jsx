@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { storyRoutes } from "../utils/APIRoutes";
+import { bookmarkRoute, storyRoutes } from "../utils/APIRoutes";
 import axios from "axios";
 import '../styles/view.css'
 import share from '../assets/share.png'
 import cross from '../assets/cross.png'
 import bookmark from '../assets/bookmark.png'
 import heart from '../assets/heart.png'
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrUser } from "../store/userSlice";
 
 function View() {
   const params = useParams();
@@ -15,6 +17,8 @@ function View() {
   const [currSlide,setcurrSlide] = useState(0);
   const navigate = useNavigate();
   const location = useLocation()
+  const user = useSelector((state)=>state.user.user)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const value = params["*"];
@@ -63,6 +67,22 @@ function View() {
     })
   }
 
+  const handleBookmarkClick = async()=>{
+    if(user === null)
+        alert("Please login first")
+    else{
+       try {
+         if(user.bookmarks.indexOf(storyID) === -1){
+            alert("Already bookmarked")
+          }
+         const response = await axios.post(bookmarkRoute,{story_id:storyID,user_id:user._id})
+         setCurrUser(response.data.payload)
+       } catch (error) {
+          alert(error)
+       }
+    }
+  }
+
   return (
     <>
       {story && (
@@ -87,7 +107,7 @@ function View() {
                 <p>{story.slides[currSlide].description}</p>
               </div>
                 <div className="buttons">
-                  <img src={bookmark} className="bookmark" alt="bookmark"/>
+                  <img src={bookmark} onClick={()=>handleBookmarkClick()} className="bookmark" alt="bookmark"/>
                   <img src={heart} className="heart" alt="heart"/>
                 </div>
               </div>

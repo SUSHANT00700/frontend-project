@@ -86,6 +86,7 @@ function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
       setUser(res.data.payload);
     } catch (error) {
       alert(error);
+      console.log(error)
     }
   };
 

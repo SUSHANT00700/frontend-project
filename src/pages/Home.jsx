@@ -8,9 +8,16 @@ import { storyRoutes } from "../utils/APIRoutes.js";
 import "../styles/home.css";
 import StoryCard from "../components/StoryCard.jsx";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {setCurrUser} from '../store/userSlice.js'
 
 function Home() {
-  const [user, setUser] = useState(null);
+  const user = useSelector((state)=>state.user.user)
+  const dispatch = useDispatch()
+
+  const setUser = (obj)=>{
+    dispatch(setCurrUser(obj))
+  }
   const navigate = useNavigate()
   const [frontData, setFrontData] = useState({
     food: [],
