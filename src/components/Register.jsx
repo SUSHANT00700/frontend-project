@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../styles/register.css";
-import eye from "../assets/eye.png";
 import { registerRoute } from "../utils/APIRoutes";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
