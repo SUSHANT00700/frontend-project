@@ -4,6 +4,8 @@
     font-family:  "DM Sans", sans-serif;
 }
 
+
+
 .squareDiv{
     display: flex;
     flex-wrap: nowrap;
@@ -13,7 +15,7 @@
     margin-left: 43px;
     scroll-behavior: smooth;
 }
-.squareDiv::-webkit-scrollbar{
+*::-webkit-scrollbar{
     display: none;
 }
 

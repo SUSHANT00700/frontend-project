@@ -3,3 +3,5 @@ export const registerRoute = `${host}/user/register`
 export const loginRoute = `${host}/user/login`
 export const storyRoutes = `${host}/story/`
 export const bookmarkRoute = `${host}/user/bookmark`
+export const removeBookmarkRoute = `${host}/user/removeBookmark`
+export const addLike = `${host}/story/addLike`

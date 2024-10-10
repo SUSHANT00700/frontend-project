@@ -4,14 +4,17 @@ import eye from "../assets/eye.png";
 import { registerRoute } from "../utils/APIRoutes";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { setCurrUser } from "../store/userSlice";
+import { useDispatch } from "react-redux";
 
-function Register({registerVisible,setRegisterVisible,setUser}) {
+function Register() {
 
   const navigate = useNavigate()
   const [username,setUsername]  = useState("");
   const [password,setPassword] = useState("");
 
   const [eyeOpen,setEyeOpen] = useState(false)
+  const dispatch = useDispatch()
 
   const handleRegister = async()=>{
     const newUser = {
@@ -20,15 +23,17 @@ function Register({registerVisible,setRegisterVisible,setUser}) {
     }
     const data = await axios.post(registerRoute,newUser)
     navigate("/")
-    setRegisterVisible(!registerVisible)
-    setUser(data.data.payload)
+    
+    dispatch(setCurrUser(data.data.payload))
   }
 
   return (
     <div className="outer">
       <div className="register">
         <div className="closeButtonContainer">
-          <div className="close-button" onClick={()=>{setRegisterVisible(!registerVisible)}}></div>
+          <div className="close-button" onClick={()=>{
+            navigate("/")
+          }}></div>
         </div>
         <div className="heading">Register</div>
         <div className="username">

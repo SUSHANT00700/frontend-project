@@ -2,11 +2,15 @@
     position: relative;
     min-width: 235px;
     height: 235px;
-    border: 5px solid #00ACD2;
     border-radius: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+}
+
+.selected{
+    border: 5px solid #00ACD2;
 }
 
 .squareCard img{

@@ -5,6 +5,7 @@ import axios from "axios";
 import { storyRoutes } from "../utils/APIRoutes";
 import { CATEGORIES } from "../utils/constants";
 import { validateMediaUrl } from "../utils/mediavalidator";
+import { toast } from "react-toastify";
 
 function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
   const [category, setCategory] = useState("");
@@ -22,7 +23,7 @@ function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
     if (slides.length < 6) {
       setSlides([...slides, { heading: "", description: "", imgURL: "" }]);
     } else {
-      alert("Cannot exceed more than 6 slides");
+      toast("Cannot exceed more than 6 slides");
     }
   };
 
@@ -31,7 +32,7 @@ function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
       const newSlides = slides.filter((_, i) => i !== slides.length - 1);
       setSlides(newSlides);
     } else {
-      alert("Cannot have less than 3 slides");
+      toast("Cannot have less than 3 slides");
     }
   };
 
@@ -47,7 +48,7 @@ function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
         return;
       }
     }
-    alert("Invalid operator");
+    toast("Invalid operator");
   };
 
   const validate = async () => {
@@ -57,7 +58,7 @@ function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
         slide.description.trim().length === 0 ||
         slide.imgURL.trim().length === 0
       ) {
-        alert("Please fill all fields");
+        toast("Please fill all fields");
         return;
       }
     }
@@ -66,7 +67,7 @@ function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
     for (let slide of slides){
       const result = await validateMediaUrl(slide.imgURL)
       if(result.valid === false){
-        alert("Invalid media input")
+        toast("Invalid media input")
         return;
       }
     }
@@ -80,12 +81,12 @@ function CreateStory({ setAddStoryVisible, addStoryVisible, user, setUser }) {
 
     try {
       const res = await axios.post(storyRoutes, Story);
-      alert("Story added successfully");
+      toast("Story added successfully");
       navigate("/");
       setAddStoryVisible(!addStoryVisible)
       setUser(res.data.payload);
     } catch (error) {
-      alert(error);
+      toast(error);
       console.log(error)
     }
   };

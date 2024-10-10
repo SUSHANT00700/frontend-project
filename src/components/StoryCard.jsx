@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { storyRoutes } from "../utils/APIRoutes";
 import "../styles/storyCard.css";
+import { toast } from "react-toastify";
 
 function StoryCard({ data }) {
   const [story, setStory] = useState();
@@ -14,7 +15,7 @@ function StoryCard({ data }) {
         );
         setStory(response.data.payload);
       } catch (error) {
-        alert(error);
+        toast(error);
       }
     };
     loadData();

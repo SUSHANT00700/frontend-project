@@ -7,10 +7,8 @@ import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import CreateStory from "./CreateStory";
 
-function Navbar({ user, setUser }) {
+function Navbar({ user, setUser, bookmarkClicked, handleBookmarkClick }) {
   const [logoutDiv, setLogoutDivVisible] = useState(false);
-  const [registerVisible, setRegisterVisible] = useState(false);
-  const [loginVisible, setLoginVisible] = useState(false);
   const [addStoryVisible, setAddStoryVisible] = useState(false);
 
   const navigate = useNavigate();
@@ -21,11 +19,9 @@ function Navbar({ user, setUser }) {
 
   const handleLoginClick = () => {
     navigate("/login");
-    setLoginVisible(!loginVisible);
   };
   const handleRegisterClick = () => {
     navigate("/register");
-    setRegisterVisible(!registerVisible);
   };
   const handleAddStoryClick = () => {
     navigate("/addStory");
@@ -55,26 +51,18 @@ function Navbar({ user, setUser }) {
             >
               Sign in
             </div>
-            {registerVisible && (
-              <Register
-                registerVisible={registerVisible}
-                setRegisterVisible={setRegisterVisible}
-                setUser={setUser}
-              />
-            )}
-            {loginVisible && (
-              <Login
-                loginVisible={loginVisible}
-                setLoginVisible={setLoginVisible}
-                setUser={setUser}
-              />
-            )}
           </>
         ) : (
           <>
-            <div className="pill" id="register">
-              <img src={bookmark} alt="bookmark" />
-              Bookmark
+            <div className="pill" id="register" onClick={handleBookmarkClick}>
+              {bookmarkClicked ? (
+                "Home"
+              ) : (
+                <>
+                  <img src={bookmark} alt="bookmark" />
+                  Bookmarks
+                </>
+              )}
             </div>
             <div
               className="pill"
@@ -117,6 +105,7 @@ function Navbar({ user, setUser }) {
                   className="pill"
                   id="register"
                   onClick={() => {
+                    setLogoutDivVisible(!logoutDiv)
                     setUser(null);
                   }}
                 >
